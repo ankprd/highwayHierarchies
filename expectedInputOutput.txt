@@ -1,0 +1,43 @@
+From a list of roads described by their length and ends, the code calculates which road should be one which level, using the Highway algorithm as described by Dominik Schultes and Peter Sanders in "Highway Hierarchies Hasten Exact Shortest Path Queries".
+
+More details about the algorithm and the result I obtained can be found in the file presentation.pdf
+(On top of what is presented in this document, the algo implemented "compacts" lines. That is to say that if the following graph appears : 1-2-3-4-5 where 2, 3 and 4 have only 2 neighbouring nodes each, it will be replaced by 1-5 in the calculations of the following levels. In the output, anytime the path 1-5 should have appeared, it will be replaced with 1-2, 2-3, 3-4, 4-5. This only hastens calculations, and would hasten queries if they were implemented).
+
+Before using the program, the following constants must be modified in it :
+NB_NOEUDS : the number of nodes of the graph
+NB_NIVEAUX : the number of levels wanted
+H : as defined in the paper by D Schultes and P Sanders, the maximum dijkstra rank of a node to be in the source neighbourhood
+
+The input format is : (entreeintermediaire.txt)
+N : an integer representing the number of roads described
+Followed by one line per road, in the following format :
+id t d a
+Where :
+id is the road id
+t is the time necessary to go from one end of the road to the other
+d is the id of the first end of the road
+a is the id of the other end of the road
+(the order of d and a doesn't matter as roads are considered non-directionnal)
+
+The output format is :
+(listeChems.txt)
+For each level, all the road on this level. If a road is on level 5, then it is also on levels 0, 1, 2, 3 and 4, and will be mentionned on those levels too.
+Each line has the following format : 
+uid id n
+Where :
+uid is a unique id, different for each line
+id is the road id as given in the input
+n is the level on which this road is present
+
+So for instance, if road 78 is on level 5, the following lines will be present in the output : 
+78 78 1
+456 78 2
+789 78 3
+1234 78 4
+4567 78 5
+(uid is random here)
+
+(nbChems.txt)
+One line per level : 
+niv : i et nbC : c where  is the level and c the number of roads on this level
+And an additionnal line : running time
