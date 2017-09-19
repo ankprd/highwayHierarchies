@@ -1,7 +1,6 @@
-# highwayHierarchies
+# Highway Hierarchies
 
-In this project I implemented part of the Highway Hierarchies algorithm. This algorithm is described by Dominik Schultes and Peter Sanders in "Highway Hierarchies Hasten Exact Shortest
-Path Queries", pulished in 2005. 
+In this project I implemented part of the Highway Hierarchies algorithm. This algorithm is described by Dominik Schultes and Peter Sanders in "Highway Hierarchies Hasten Exact Shortest Path Queries", pulished in 2005.
 
 To hasten shortest paths queries, this algorithm defines the level of a road (similar to what is done in reality : small roads = lvl 0, national roads = lvl1 and highway = lvl3 for instance). Each road is assigned a level in the pre-caclculation step. Once this step is finished, each query ("What is the shortest path from s to t ?") is answered by running Dijkstra's algorithm on the new graph (augmented with road levels), with some restrictions to hasten it : when far from s and t, only high level roads can be used.
 
